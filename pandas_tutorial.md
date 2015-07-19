@@ -15,9 +15,11 @@
     %matplotlib inline
     
     import pandas as pd as a shortcut. We'll see why in the next section
+    
     import pandas as pd
     
     used to make plots of our data
+    
     import matplotlib
 
 ### Getting data into a dataframe
@@ -34,6 +36,7 @@
 
 
     printing the first five rows, including the header columns
+    
     print twitter_data.head()
 
              Date       Open       High        Low      Close    Volume  Adj Close
@@ -45,7 +48,8 @@
 
 
 
-    ######we can also view the last five rows
+    we can also view the last five rows
+    
     print twitter_data.tail()
 
                Date       Open       High        Low      Close     Volume  \
@@ -205,6 +209,7 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 
 
     snapshot = twitter_data.head(20)
+    
     print snapshot
 
 ### Let's Analyze our Data
@@ -251,19 +256,23 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 
 
     if we want to find the days where the stock price high is greater than $36 per share, we can display it like so:
+    
     snapshot[snapshot.High > 36]
 
 
     We find the dates where the Low price is greater than $36 AND the Close price is less than $37
+    
     snapshot[(snapshot.Low >= 36) & (snapshot.Close < 37)]
 
 ### Sorting data by column
 
 
     shortening the twitter_data name
+    
     t = twitter_data
     
     find data where the Open price is higher than $65 and sort by Volume
+    
     t[t.Open > 65].sort('Volume')
 
 
@@ -374,6 +383,7 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 
 
     basic statistics of our data
+    
     t.describe()
 
 
@@ -484,6 +494,7 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 
 
     Add a column to calculate the percent change from the day's stock low to the day's stock high
+    
     t["Change"] = (t.High - t.Low)/t.Low * 100
     print t.head()
 
@@ -503,7 +514,8 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 
 
 
-    ######Get mean for all columns in the twitter_data dataframe
+   Get mean for all columns in the twitter_data dataframe
+   
     t.mean()
 
 
@@ -522,6 +534,7 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 
 
    Get mean for all columns in the snapshot dataframe
+   
     snapshot.mean()
 
 
@@ -586,17 +599,6 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
     250  112.449997  
     251  112.650002  
 
-
-
-    ### Use Matplotlib to 
-
-
-    lnkd_full.plot(x="High", y="Low")
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x10a79aa50>
 
 
 
