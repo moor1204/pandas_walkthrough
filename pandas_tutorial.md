@@ -14,16 +14,16 @@
 
     %matplotlib inline
     
-    ######import pandas as pd as a shortcut. We'll see why in the next section
+    import pandas as pd as a shortcut. We'll see why in the next section
     import pandas as pd
     
-    ######used to make plots of our data
+    used to make plots of our data
     import matplotlib
 
 ### Getting data into a dataframe
 
 
-    ######defining a variable to read a csv file from the web
+    defining a variable to read a csv file from the web
     twitter_data = pd.read_csv("http://real-chart.finance.yahoo.com/table.csv?s=TWTR&d=6&e=3&f=2015&g=d&a=10&b=7&c=2013&ignore=.csv", header=0)
 
 * twitter_data will be our array index, and the data within the CSV file will become our two dimensional array
@@ -33,7 +33,7 @@
 ### Printing the Head and Tail of our Data
 
 
-    ######printing the first five rows, including the header columns
+    printing the first five rows, including the header columns
     print twitter_data.head()
 
              Date       Open       High        Low      Close    Volume  Adj Close
@@ -244,26 +244,26 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 ### Viewing a Series within a dataframe
 
 
-    ######this will return boolean values, which are not descriptive enough for our analysis
+    this will return boolean values, which are not descriptive enough for our analysis
     snapshot["High"] > 36 
 
 ### Viewing the data where a certain condition is true
 
 
-    ######if we want to find the days where the stock price high is greater than $36 per share, we can display it like so:
+    if we want to find the days where the stock price high is greater than $36 per share, we can display it like so:
     snapshot[snapshot.High > 36]
 
 
-    ######We find the dates where the Low price is greater than $36 AND the Close price is less than $37
+    We find the dates where the Low price is greater than $36 AND the Close price is less than $37
     snapshot[(snapshot.Low >= 36) & (snapshot.Close < 37)]
 
 ### Sorting data by column
 
 
-    ######shortening the twitter_data name
+    shortening the twitter_data name
     t = twitter_data
     
-    ######find data where the Open price is higher than $65 and sort by Volume
+    find data where the Open price is higher than $65 and sort by Volume
     t[t.Open > 65].sort('Volume')
 
 
@@ -373,7 +373,7 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 ### Simple Descriptive Statistics
 
 
-    ######basic statistics of our data
+    basic statistics of our data
     t.describe()
 
 
@@ -483,7 +483,7 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 ### Append to a dataframe
 
 
-    ######Add a column to calculate the percent change from the day's stock low to the day's stock high
+    Add a column to calculate the percent change from the day's stock low to the day's stock high
     t["Change"] = (t.High - t.Low)/t.Low * 100
     print t.head()
 
@@ -521,7 +521,7 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 
 
 
-    ######Get mean for all columns in the snapshot dataframe
+   Get mean for all columns in the snapshot dataframe
     snapshot.mean()
 
 
@@ -540,18 +540,22 @@ We can create a dataframe from our original dataframe! Let's call our new datafr
 ### Merging files to create a large dataframe
 
 
-    ######create three new dataframes from three separate csv files
+    create three new dataframes from three separate csv files
+    
     lnkd15_df = pd.read_csv("/Users/moor1204/Desktop/pandas_walkthrough/lnkd_hist2015.csv", header=0)
     lnkd14_df = pd.read_csv("/Users/moor1204/Desktop/pandas_walkthrough/lnkd_hist2014.csv", header=0)
     lnkd13_df = pd.read_csv("/Users/moor1204/Desktop/pandas_walkthrough/lnkd_hist2013.csv", header=0)
     
-    ######combine dataframes into a single list
+   combine dataframes into a single list
+   
     frames = [lnkd15_df, lnkd14_df, lnkd13_df]
     
-    ######concatinate the list into a single dataframe
+    concat the list into a single dataframe
+    
     lnkd_full = pd.concat(frames)
     
-    ######print the head and tail to make sure we combined the dataframes correctly
+    print the head and tail to make sure we combined the dataframes correctly
+    
     print lnkd_full.head()
     print lnkd_full.tail()
 
